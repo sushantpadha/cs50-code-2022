@@ -1,0 +1,6 @@
+cs50
+Flask
+Flask-Session
+requests
+markdown==3.3.7
+pymdown-extensions==9.5

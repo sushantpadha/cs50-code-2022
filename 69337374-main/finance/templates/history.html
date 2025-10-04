@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block main %}
+<table class="table">
+    <thead>
+        <tr>
+            {% for col in columns %}
+                {% set align_class=text_alignment_classes[alignment[loop.index - 1]] %}
+                <th class="{{ align_class }}">{{ col }}</th>
+            {% endfor %}
+        </tr>
+    </thead>
+    <tbody>
+        {% for row in transactions %}
+            <tr>
+                {% for field in row %}
+                    {% if field | lower in usd_fields %}
+                        {% set cell_data=(row[field] | usd) %}
+                    {% else %}
+                        {% set cell_data=row[field] %}
+                    {% endif %}
+                    {% set align_class=text_alignment_classes[alignment[loop.index - 1]] %}
+                    <td class="{{ align_class }}">{{ cell_data }}</td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

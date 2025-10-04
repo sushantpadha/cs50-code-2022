@@ -1,0 +1,11 @@
+sort1 uses: bubble sort
+
+How do you know?: Total run times are high compared to other algorithms (increasing roughly as n^2) and, drastically lower in case of sorted lists (best case) corresponding to big omega n complexity.
+
+sort2 uses: merge sort
+
+How do you know?: Total run times are very low compared to other algorithms (increasing roughly as n * log n).
+
+sort3 uses: selection sort
+
+How do you know?: Total run times in between that of merge sort and bubble sort, because of less operations performed than bubble sort. Also, sees no speedup in case of sorted lists, corrresponding to big omega n^2 complexity.

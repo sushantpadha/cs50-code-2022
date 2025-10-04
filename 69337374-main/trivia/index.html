@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="./styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+    </head>
+
+    <body>
+        <div class="header">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+                <h3>The Statue of Liberty was a gift to the United States from which European country?</h3>
+                <div class="answer"></div>
+                <form id="mcq">
+                    <button id="mcq-1">Belgium</button>
+                    <button id="mcq-2">Germany</button>
+                    <button id="mcq-3">France</button>
+                </form>
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+                <h3>When was Google founded?</h3>
+                <div class="answer"></div>
+                <form id="free">
+                    <input type="text" id="free-text" autocomplete="off" />
+                    <button id="free-submit">Check Answer</button>
+                </form>
+            </div>
+        </div>
+        <script>
+            // define colors
+            const CORRECT_COLOR = "#76B947";
+            const INCORRECT_COLOR = "#DC4731";
+
+            // get the mcq form, its options and answer element
+            const mcq = document.querySelector("form#mcq");
+            const mcq_options = mcq.querySelectorAll("button");
+            const mcq_answer = mcq.parentElement.querySelector(".answer");
+            const mcq_solution = "France";  // correct answer
+
+            for (let i = 0; i < mcq_options.length; i++) {
+                // get button
+                const option = mcq_options[i];
+
+                // add event listener to check answer
+                option.addEventListener("click", (e) => {
+                    e.preventDefault();
+
+                    // correct answer
+                    if (option.innerHTML === mcq_solution) {
+                        console.log("✔️ correct answer (from mcq) was chosen");
+
+                        // change style
+                        option.style.backgroundColor = CORRECT_COLOR;
+
+                        // change answer text
+                        mcq_answer.textContent = "Correct!";
+                    }
+                    // incorrect answer
+                    else {
+                        console.log("❌ wrong answer (from mcq) was chosen");
+
+                        // change style
+                        option.style.backgroundColor = INCORRECT_COLOR;
+
+                        // change answer text
+                        mcq_answer.textContent = "Incorrect.";
+                    }
+                });
+                console.log(option);
+            }
+
+            // get the free form, its text field, submit button and answer element
+            const free = document.querySelector("form#free");
+            const free_text = free.querySelector("input");
+            const free_submit = free.querySelector("button");
+            const free_answer = free.parentElement.querySelector(".answer");
+            const free_solution = "1989";  // correct answer
+
+            free_submit.addEventListener("click", function (e) {
+                e.preventDefault();
+                // get value of text field (done inside function to make it non-static)
+                const text_value = free_text.value;
+                console.log(text_value)
+
+                // correct answer
+                if (text_value === free_solution) {
+                    console.log("✔️ correct answer (from free) was chosen");
+
+                    // change style
+                    free_text.style.backgroundColor = CORRECT_COLOR;
+
+                    // change answer text
+                    free_answer.textContent = "Correct!";
+                }
+                // incorrect answer
+                else {
+                    console.log("❌ wrong answer (from free) was chosen");
+
+                    // change style
+                    free_text.style.backgroundColor = INCORRECT_COLOR;
+
+                    // change answer text
+                    free_answer.textContent = "Incorrect.";
+                }
+            });
+        </script>
+    </body>
+
+</html>
