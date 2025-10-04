@@ -18,4 +18,8 @@ It covers labs and assignments in:
 9. Flask
 10. Emoji
 
-Since I copied and reuploaded source files here, they do not show git commit history F but 'tis just code
+> since I copied and reuploaded source files here, they do not show git commit history F but 'tis just code
+> ~ ~ ~
+
+You may have to run `pip install cs50` to make the code work.
+
